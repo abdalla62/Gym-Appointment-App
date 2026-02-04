@@ -1,0 +1,36 @@
+﻿flutter : 'crumb' is 
+not recognized as an 
+internal or external 
+command,
+At line:1 char:1
++ flutter analyze 
+2>&1 | Out-File analy
+sis_errors_2.txt 
+-Encoding utf8
++ 
+~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: ('crumb'   
+  is not ...terna    
+l command,:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+operable program or 
+batch file.
+Analyzing frontend...                                           
+
+  error - A try block must be followed by an 'on', 'catch', or 'finally' clause - lib\screens\auth\register_screen.dart:30:5 - missing_catch_or_finally
+  error - Expected to find '}' - lib\screens\auth\register_screen.dart:43:3 - expected_token
+warning - Unused import: '../../providers/auth_provider.dart' - lib\screens\booking\booking_screen.dart:3:8 - unused_import
+warning - Unused import: '../../utils/constants.dart' - lib\screens\booking\booking_screen.dart:5:8 - unused_import
+  error - A try block must be followed by an 'on', 'catch', or 'finally' clause - lib\screens\booking\booking_screen.dart:53:5 - missing_catch_or_finally
+   info - Unnecessary use of string interpolation - lib\screens\booking\booking_screen.dart:57:23 - unnecessary_string_interpolations
+  error - Expected to find '}' - lib\screens\booking\booking_screen.dart:77:3 - expected_token
+
+7 issues found. (ran 
+in 10.1s)

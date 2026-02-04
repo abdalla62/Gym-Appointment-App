@@ -1,0 +1,41 @@
+﻿flutter : 'crumb' is 
+not recognized as an 
+internal or external 
+command,
+At line:1 char:1
++ flutter analyze 
+2>&1 | Out-File 
+analysis_errors.txt 
+-Encoding utf8
++ 
+~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: ('crumb'   
+  is not ...terna    
+l command,:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+operable program or 
+batch file.
+Analyzing frontend...                                           
+
+   info - 'background' is deprecated and shouldn't be used. Use surface instead. This feature was deprecated after v3.18.0-0.1.pre - lib\main.dart:36:17 - deprecated_member_use
+  error - The named parameter 'token' isn't defined - lib\providers\appointment_provider.dart:22:9 - undefined_named_parameter
+  error - 4 positional arguments expected by 'register', but 3 found - lib\screens\auth\register_screen.dart:31:93 - not_enough_positional_arguments
+   info - Don't use 'BuildContext's across async gaps - lib\screens\auth\register_screen.dart:33:20 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\screens\auth\register_screen.dart:36:28 - use_build_context_synchronously
+warning - Unused import: '../../utils/constants.dart' - lib\screens\booking\booking_screen.dart:5:8 - unused_import
+   info - Unnecessary use of string interpolation - lib\screens\booking\booking_screen.dart:59:23 - unnecessary_string_interpolations
+   info - Don't use 'BuildContext's across async gaps - lib\screens\booking\booking_screen.dart:69:28 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\screens\booking\booking_screen.dart:72:20 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\screens\booking\booking_screen.dart:74:28 - use_build_context_synchronously
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\appointment_card.dart:42:36 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\appointment_card.dart:43:43 - deprecated_member_use
+
+12 issues found. 
+(ran in 9.7s)
