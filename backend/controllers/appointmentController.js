@@ -1,3 +1,4 @@
+//add  commont AppointmentControllers
 const Appointment = require('../models/Appointment');
 const Availability = require('../models/Availability');
 const Notification = require('../models/Notification');
