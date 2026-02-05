@@ -1,3 +1,4 @@
+//add commont authMiddleware.js
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
@@ -26,6 +27,7 @@ const protect = async (req, res, next) => {
         res.status(401).json({ message: 'Ma haysatid oggolaansho, token lama helin (Not authorized, no token)' });
     }
 };
+//add admin middleware
 
 const admin = (req, res, next) => {
     if (req.user && req.user.role === 'admin') {

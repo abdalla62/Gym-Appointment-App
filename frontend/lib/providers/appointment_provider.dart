@@ -34,7 +34,9 @@ class AppointmentProvider with ChangeNotifier {
     notifyListeners();
 
     try {
-      final List<dynamic> data = await _apiService.get('/availability/$trainerId?date=$date');
+      final List<dynamic> data = await _apiService.get(
+        '/availability/$trainerId?date=$date',
+      );
       if (data.isNotEmpty) {
         final availability = Availability.fromJson(data[0]);
         _availableSlots = availability.slots;
@@ -47,20 +49,22 @@ class AppointmentProvider with ChangeNotifier {
     }
   }
 
-  Future<void> bookAppointment(String trainerId, String date, String time, String notes) async {
+  Future<void> bookAppointment(
+    String trainerId,
+    String date,
+    String time,
+    String notes,
+  ) async {
     _isLoading = true;
     notifyListeners();
 
     try {
-      await _apiService.post(
-        '/appointments', 
-        {
-          'trainer': trainerId,
-          'date': date,
-          'time': time,
-          'notes': notes,
-        },
-      );
+      await _apiService.post('/appointments', {
+        'trainer': trainerId,
+        'date': date,
+        'time': time,
+        'notes': notes,
+      });
       await fetchUserAppointments();
     } catch (e) {
       rethrow;
@@ -99,9 +103,12 @@ class AppointmentProvider with ChangeNotifier {
       notifyListeners();
     }
   }
+
   Future<void> completeAppointment(String id) async {
     try {
-      await _apiService.put('/appointments/$id/status', {'status': 'completed'});
+      await _apiService.put('/appointments/$id/status', {
+        'status': 'completed',
+      });
       final index = _appointments.indexWhere((a) => a.id == id);
       if (index != -1) {
         final a = _appointments[index];
@@ -127,6 +134,7 @@ class AppointmentProvider with ChangeNotifier {
     }
   }
 
+  // about deletes
   Future<void> deleteAppointment(String id) async {
     try {
       await _apiService.delete('/appointments/$id');

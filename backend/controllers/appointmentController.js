@@ -165,6 +165,7 @@ const cancelAppointment = async (req, res) => {
 // @desc    Hel dhammaan ballamada (Admin Only) (Get all appointments)
 // @route   GET /api/appointments/all
 // @access  Private/Admin
+// to reade all appointments for admin to manage and view
 const getAllAppointments = async (req, res) => {
     try {
         const appointments = await Appointment.find({})
