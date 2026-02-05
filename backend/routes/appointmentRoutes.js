@@ -27,6 +27,7 @@ router.put('/:id/status', protect, updateAppointmentStatus);
 const { admin } = require('../middleware/authMiddleware');
 
 // Admin Routes
+// to reade all appointments for admin to manage and view
 router.get('/all', protect, admin, getAllAppointments);
 router.post('/admin/create', protect, admin, adminCreateAppointment);
 router.put('/admin/:id', protect, admin, adminUpdateAppointment);
