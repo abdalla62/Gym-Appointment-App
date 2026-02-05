@@ -29,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+  // Habka macluumaadka galitaanka loo diro (Submit logic for login/register)
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
 
@@ -36,11 +37,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
     try {
       if (_isLogin) {
+        // Galitaanka nidaamka (Sign In)
         await authProvider.login(
           _emailController.text.trim(),
           _passwordController.text.trim(),
         );
       } else {
+        // Diiwaangelin cusub (Sign Up)
         await authProvider.register(
           _nameController.text.trim(),
           _emailController.text.trim(),
@@ -48,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
           'user',
         );
       }
-      // Navigation is handled by auth state changes in main.dart or we can check success here
+      // Socodka shaashadda xigta (Navigation happens via state changes)
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -94,12 +97,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       const Spacer(flex: 2),
 
-                      // Back Button (only if needed, but this is root)
-                      // if (!_isLogin)
-                      //   IconButton(
-                      //     icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
-                      //     onPressed: () => setState(() => _isLogin = true),
-                      //   ),
+                      Image.asset(
+                        'assets/images/logo.png',
+                        height: 60,
+                        errorBuilder: (context, error, stackTrace) => const Icon(Icons.fitness_center, color: AppColors.primary, size: 50),
+                      ),
+                      const SizedBox(height: 24),
+
                       const Text(
                         'Evaluate Your\nPerformance',
                         style: TextStyle(
@@ -340,7 +344,14 @@ class _LoginScreenState extends State<LoginScreen> {
       controller: controller,
       obscureText: isPassword,
       style: const TextStyle(color: Colors.white),
-      validator: (value) => value!.isEmpty ? 'Required' : null,
+      validator: (value) {
+        if (value == null || value.isEmpty) return 'Fadlan geli password-ka';
+        if (isPassword && value.length < 8) {
+          // Password-ka waa inuu ka koobnaadaa ugu yaraan 8 xaraf (Minimum 8 characters)
+          return 'Password-ku waa inuu ka koobnaadaa 8 xaraf';
+        }
+        return null;
+      },
       decoration: InputDecoration(
         filled: true,
         fillColor: AppColors.surface, // Dark card color

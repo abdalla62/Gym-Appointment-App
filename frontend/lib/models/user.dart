@@ -1,3 +1,4 @@
+// Qaabdhismeedka macluumaadka qofka (User data model)
 class User {
   final String id;
   final String name;
@@ -13,6 +14,7 @@ class User {
     this.token,
   });
 
+  // Habka looga dhigo xogta mid la fahmi karo (Factory method to create User from JSON)
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       id: json['_id'],

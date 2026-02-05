@@ -5,6 +5,7 @@ import '../../providers/appointment_provider.dart';
 import '../../providers/user_provider.dart';
 import '../../utils/constants.dart';
 import '../../models/user.dart';
+import '../../widgets/custom_app_bar.dart';
 import 'booking_success_screen.dart';
 
 class BookingScreen extends StatefulWidget {
@@ -28,6 +29,7 @@ class _BookingScreenState extends State<BookingScreen> {
     });
   }
 
+  // Marka tababare la doorto (When a trainer is selected)
   void _onTrainerSelected(User trainer) {
     setState(() {
       _selectedTrainer = trainer;
@@ -44,6 +46,7 @@ class _BookingScreenState extends State<BookingScreen> {
     _fetchSlots();
   }
 
+  // Soo helista xilliyada banaan (Fetch available time slots)
   void _fetchSlots() {
     if (_selectedTrainer != null) {
       Provider.of<AppointmentProvider>(context, listen: false).fetchAvailableSlots(
@@ -53,6 +56,7 @@ class _BookingScreenState extends State<BookingScreen> {
     }
   }
 
+  // Habka lagu xaqiijinayo ballanta (Confirm the booking)
   Future<void> _confirmBooking() async {
      if (_selectedTrainer == null || _selectedTime == null) {
        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Fadlan dooro tababare iyo waqti')));
@@ -69,8 +73,8 @@ class _BookingScreenState extends State<BookingScreen> {
        );
        
        if (!mounted) return;
-       // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Appointment Booked Successfully!')));
        
+       // Haddii ballantu u dhacdo si sax ah (If booking is successful)
        Navigator.pushReplacement(
          context,
          MaterialPageRoute(
@@ -90,13 +94,8 @@ class _BookingScreenState extends State<BookingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: const Text('Book Appointment', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
-        backgroundColor: Colors.black,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
-        ),
+      appBar: const CustomAppBar(
+        title: 'Book Appointment',
         centerTitle: true,
       ),
       body: Column(

@@ -9,6 +9,7 @@ import 'providers/appointment_provider.dart';
 import 'providers/user_provider.dart';
 
 void main() {
+  // Bilaabidda nidaamka Flutter (Initialize Flutter system)
   runApp(const MyApp());
 }
 

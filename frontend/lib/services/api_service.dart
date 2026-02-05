@@ -13,6 +13,7 @@ class ApiService {
     };
   }
 
+  // Habka macluumaadka loogu diro server-ka (Method to send data to server)
   Future<dynamic> post(String endpoint, Map<String, dynamic> body) async {
     try {
       final headers = await _getHeaders();
@@ -27,6 +28,7 @@ class ApiService {
     }
   }
 
+  // Habka xogta looga soo aqriyo server-ka (Method to fetch data from server)
   Future<dynamic> get(String endpoint) async {
     try {
       final headers = await _getHeaders();

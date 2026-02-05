@@ -244,9 +244,15 @@ class _UserListScreenState extends State<UserListScreen> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        Image.asset(
+                          'assets/images/logo.png',
+                          height: 30,
+                          errorBuilder: (context, error, stackTrace) => const Icon(Icons.fitness_center, color: AppColors.primary),
+                        ),
+                        const SizedBox(width: 8),
                         const Text('User Management', style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
+                        const Spacer(),
                         IconButton(
                           icon: const Icon(Icons.add_circle, color: AppColors.primary, size: 28),
                           onPressed: _showAddUserDialog,

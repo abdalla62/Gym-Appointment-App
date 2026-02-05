@@ -30,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _loadCustomImages();
+    // Soo aqriska xogta marka app-ku furmo (Fetch initial data)
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final user = Provider.of<AuthProvider>(context, listen: false).user;
       final appointmentProvider = Provider.of<AppointmentProvider>(context, listen: false);
@@ -150,22 +151,33 @@ class _HomeScreenState extends State<HomeScreen> {
                 colors: [Color(0xFF0F0F0F), Color(0xFF1A1A1A)],
               ),
             ),
-            child: Row(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                GestureDetector(
-                  onTap: () => _pickImage('profile', 'user_profile'),
-                  child: CircleAvatar(
-                    radius: 30,
-                    backgroundColor: AppColors.surface,
-                    backgroundImage: _customImages['profile'] != null && _customImages['profile']!.isNotEmpty
-                        ? FileImage(File(_customImages['profile']!))
-                        : const NetworkImage('https://i.pravatar.cc/150?img=11') as ImageProvider,
-                    child: (_customImages['profile'] == null || _customImages['profile']!.isEmpty)
-                        ? const Icon(Icons.camera_alt, color: Colors.white54, size: 20)
-                        : null,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image.asset(
+                      'assets/images/logo.png',
+                      height: 40,
+                      errorBuilder: (context, error, stackTrace) => const Icon(Icons.fitness_center, color: AppColors.primary, size: 30),
+                    ),
+                    GestureDetector(
+                      onTap: () => _pickImage('profile', 'user_profile'),
+                      child: CircleAvatar(
+                        radius: 20,
+                        backgroundColor: AppColors.surface,
+                        backgroundImage: _customImages['profile'] != null && _customImages['profile']!.isNotEmpty
+                            ? FileImage(File(_customImages['profile']!))
+                            : const NetworkImage('https://i.pravatar.cc/150?img=11') as ImageProvider,
+                        child: (_customImages['profile'] == null || _customImages['profile']!.isEmpty)
+                            ? const Icon(Icons.camera_alt, color: Colors.white54, size: 15)
+                            : null,
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 16),
+                const SizedBox(height: 16),
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -590,6 +602,13 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () => Scaffold.of(context).openDrawer(),
               ),
             ),
+            const SizedBox(width: 8),
+            Image.asset(
+              'assets/images/logo.png',
+              height: 35,
+              errorBuilder: (context, error, stackTrace) => const Icon(Icons.fitness_center, color: AppColors.primary),
+            ),
+            const SizedBox(width: 20),
             GestureDetector(
               onTap: () => _pickImage('profile', 'user_profile'),
               child: CircleAvatar(

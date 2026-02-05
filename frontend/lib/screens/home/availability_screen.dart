@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../utils/constants.dart';
 import '../../services/api_service.dart';
+import '../../widgets/custom_app_bar.dart';
 
 class AvailabilityScreen extends StatefulWidget {
   const AvailabilityScreen({super.key});
@@ -82,10 +83,8 @@ class _AvailabilityScreenState extends State<AvailabilityScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: const Text('Manage Availability', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.black,
-        elevation: 0,
+      appBar: const CustomAppBar(
+        title: 'Manage Availability',
       ),
       body: RefreshIndicator(
         onRefresh: _fetchCurrentAvailability,

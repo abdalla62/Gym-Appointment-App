@@ -13,6 +13,7 @@ class AuthProvider with ChangeNotifier {
   bool get isAuthenticated => _user != null;
   String? get token => _user?.token;
 
+  // Habka login-ka loogu galo nidaamka (Login functionality)
   Future<void> login(String email, String password) async {
     _isLoading = true;
     notifyListeners();
@@ -39,6 +40,7 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
+  // Habka dadka cusub loogu diiwaangeliyo (Registration functionality)
   Future<void> register(String name, String email, String password, String role) async {
     _isLoading = true;
     notifyListeners();
